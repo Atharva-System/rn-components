@@ -144,7 +144,7 @@ numColumn={2}
 
 Example Avilable in <a href='https://github.com/atharvasystem/rn-components/blob/master/ExampleLoaderButton.js'>ExampleLoaderButton.js</a> file
 
-![Alt Text](https://github.com/atharvasystem/rn-components/blob/master/rn-loader-button.gif)
+![Alt Text](https://github.com/atharvasystem/rn-components/blob/master/src/screenshots/rn-loader-button.gif)
 
 This component's style is based on default Device's System Dark Mode.
 
