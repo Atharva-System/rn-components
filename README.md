@@ -2,11 +2,11 @@
 
 Using npm
 
-`npm install rn-component`
+`npm install as-components`
 
 Using yarn
 
-`yarn add rn-component`
+`yarn add as-components`
 
 # Usage
 
