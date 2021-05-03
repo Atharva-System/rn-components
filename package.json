@@ -1,6 +1,6 @@
 {
   "name": "as-components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple and customized reuseable components",
   "main": "index.js",
   "scripts": {
@@ -25,11 +25,10 @@
   "license": "MIT",
   "homepage": "https://github.com/atharvasystem/rn-components#readme",
   "devDependencies": {
-    "metro-react-native-babel-preset": "^0.51.1"
-  },
-  "dependencies": {
-    "react": "16.9.0",
-    "react-native": "0.61.5",
+    "metro-react-native-babel-preset": "^0.51.1",
+    "react": "^16.9.0",
+    "react-native": "^0.61.5",
     "react-native-responsive-fontsize": "^0.4.3"
-  }
+  },
+  "dependencies": {}
 }
