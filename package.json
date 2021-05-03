@@ -1,0 +1,35 @@
+{
+  "name": "rn-components",
+  "version": "1.0.0",
+  "description": "A simple and customized reuseable components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atharvasystem/rn-components.git"
+  },
+  "keywords": [
+    "react-native",
+    "react",
+    "ios",
+    "android",
+    "mobile",
+    "react",
+    "components",
+    "as",
+    "AS"
+  ],
+  "author": "AtharvaSystem",
+  "license": "MIT",
+  "homepage": "https://github.com/atharvasystem/rn-components#readme",
+  "devDependencies": {
+    "metro-react-native-babel-preset": "^0.51.1"
+  },
+  "dependencies": {
+    "react": "16.9.0",
+    "react-native": "0.61.5",
+    "react-native-responsive-fontsize": "^0.4.3"
+  }
+}
