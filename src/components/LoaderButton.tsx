@@ -3,26 +3,25 @@ import {
   View,
   Text,
   StyleSheet,
-  Appearance,
   ActivityIndicator,
   TouchableOpacity,
 } from 'react-native';
 
 enum LoaderSize {
-  small = "small",
-  large = "large"
+  small = 'small',
+  large = 'large',
 }
 
 type LoaderButtonProps = {
-  title: string,
-  buttonStyle: object,
-  textStyle: object,
-  isLoading: boolean,
-  loaderSize: LoaderSize,
-  loaderColor: string,
-  onButtonClick: () => void
-}
-const onPress = (onButtonClick) => {
+  title: string;
+  buttonStyle: object;
+  textStyle: object;
+  isLoading: boolean;
+  loaderSize: LoaderSize;
+  loaderColor: string;
+  onButtonClick: () => void;
+};
+const onPress = onButtonClick => {
   if (onButtonClick) {
     onButtonClick();
     return;
@@ -34,7 +33,7 @@ const styles = StyleSheet.create({
     height: 45,
   },
   buttonStyle: {
-    backgroundColor: Appearance.getColorScheme() === 'dark' ? 'white' : 'black',
+    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     alignItems: 'center',
     height: 45,
@@ -45,13 +44,20 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   textStyle: {
-    color: Appearance.getColorScheme() === 'dark' ? 'black' : 'white',
+    color: '#000000',
     textAlign: 'center',
     fontWeight: 'bold',
   },
 });
-const LoaderButton = ({ title = "Title", buttonStyle, textStyle, isLoading = false, loaderSize = LoaderSize.small, loaderColor = Appearance.getColorScheme() === 'dark' ? 'black' : 'white', onButtonClick }: LoaderButtonProps) => {
-
+const LoaderButton = ({
+  title = 'Title',
+  buttonStyle,
+  textStyle,
+  isLoading = false,
+  loaderSize = LoaderSize.small,
+  loaderColor = 'black',
+  onButtonClick,
+}: LoaderButtonProps) => {
   if (!Object.values(LoaderSize).includes(loaderSize)) {
     throw new Error('loaderSize must be small or large');
   }
@@ -64,13 +70,10 @@ const LoaderButton = ({ title = "Title", buttonStyle, textStyle, isLoading = fal
           <Text style={[styles.textStyle, textStyle]}> {title} </Text>
         )}
         {isLoading ? (
-          <ActivityIndicator
-            size={loaderSize}
-            color={loaderColor}
-          />
+          <ActivityIndicator size={loaderSize} color={loaderColor} />
         ) : null}
       </View>
     </TouchableOpacity>
   );
-}
+};
 export default LoaderButton;
