@@ -1,6 +1,6 @@
 {
   "name": "as-components",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A simple and customized reuseable components",
   "main": "index.js",
   "scripts": {
