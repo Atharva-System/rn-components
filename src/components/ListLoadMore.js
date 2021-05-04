@@ -15,6 +15,7 @@ class ListLoadMore extends PureComponent {
       isViewFooter: false,
       isAllDataFetched: props.isAllDataFetched,
       loaderSize: props.loaderSize ? props.loaderSize : "large",
+      loaderColor: props.loaderColor ? props.loaderColor : "black",
     };
   }
 
@@ -68,28 +69,38 @@ class ListLoadMore extends PureComponent {
       <View
         style={{ justifyContent: "center", alignItems: "center", padding: 10 }}
       >
-        <ActivityIndicator color="black" size={this.state.loaderSize} />
+        <ActivityIndicator
+          color={this.state.loaderColor}
+          size={this.state.loaderSize}
+        />
       </View>
     );
   };
 
   componentDidUpdate(prevProps) {
     if (prevProps.isAllDataFetched !== this.props.isAllDataFetched) {
-      this.setState({ isAllDataFetched: this.props.isAllDataFetched });
+      this.setState(
+        {
+          isAllDataFetched: this.props.isAllDataFetched,
+        },
+        () => {
+          if (this.state.isAllDataFetched) {
+            this.setState({ isViewFooter: false });
+          }
+        }
+      );
     }
     if (prevProps.loaderSize !== this.props.loaderSize) {
       this.setState({ loaderSize: this.props.loaderSize });
     }
+    if (prevProps.loaderColor !== this.props.loaderColor) {
+      this.setState({ loaderColor: this.props.loaderColor });
+    }
   }
 
   render() {
-    const {
-      data,
-      containerStyle,
-      refreshing,
-      listStyle,
-      reachedThreshHold,
-    } = this.props;
+    const { data, containerStyle, refreshing, listStyle, reachedThreshHold } =
+      this.props;
 
     return (
       <View style={[styles.container, containerStyle]}>
@@ -127,6 +138,7 @@ ListLoadMore.defaultProps = {
   reachedThreshHold: 0.01,
   isAllDataFetched: false,
   loaderSize: "small",
+  loaderColor: "black",
 };
 
 const styles = StyleSheet.create({

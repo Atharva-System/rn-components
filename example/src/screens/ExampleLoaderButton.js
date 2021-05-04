@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import {View, Text, SafeAreaView} from 'react-native';
-import LoaderButton from './src/components/LoaderButton';
+import {LoaderButton} from 'as-components';
 
 class ExampleLoaderButton extends PureComponent {
   constructor(props) {
