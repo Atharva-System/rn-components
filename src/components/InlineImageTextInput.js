@@ -9,7 +9,11 @@ export default class InlineImageTextInput extends Component {
   constructor(props) {
     super(props);
   }
-
+  getFocus = () => {
+    if (this.inputRef) {
+      this.inputRef.focus();
+    }
+  };
   render() {
     const {
       handleChangeText,
@@ -34,6 +38,7 @@ export default class InlineImageTextInput extends Component {
             <Image source={icon} style={styles.image} resizeMode="contain" />
           ) : null}
           <TextInput
+            ref={(ref) => (this.inputRef = ref)}
             {...this.props}
             style={[styles.inputBox, customStyle]}
             placeholder={placeholder}
