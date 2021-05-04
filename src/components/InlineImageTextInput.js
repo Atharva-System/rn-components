@@ -14,6 +14,11 @@ export default class InlineImageTextInput extends Component {
       this.inputRef.focus();
     }
   };
+  getBlur = () => {
+    if (this.inputRef) {
+      this.inputRef.blur();
+    }
+  };
   render() {
     const {
       handleChangeText,
