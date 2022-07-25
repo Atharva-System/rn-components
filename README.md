@@ -105,6 +105,7 @@ loaderSize="small"
 | onNextPageLoad    | func   | null     | Yes      | get next page when list reached to its threashold    |
 | renderFooter      | func   | null     | Yes      | render view for show loader at the bottom of list    |
 | loaderSize        | string | small    | Yes      | size of loader in footer view                        |
+| isAllDataFetched  | bool   | false    | No       | set true when all data fetched                       |
 
 ## 4. GridLoadMore
 
@@ -136,6 +137,7 @@ numColumn={2}
 | renderFooter      | func   | null     | Yes      | render view for show loader at the bottom of list    |
 | loaderSize        | string | small    | Yes      | size of loader in footer view                        |
 | numColumn         | number | 2        | No       | for show grid column                                 |
+| isAllDataFetched  | bool   | false    | No       | set true when all data fetched                       |
 
 ## 4. LoaderButton
 
