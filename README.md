@@ -25,7 +25,7 @@ handleChangeText=(text)=>{
 
 <InlineImageTextInput
     handleChangeText={this.handleChangeText.bind(this}
-    placeholder="Enter Your Email"
+    label="Enter Your Email"
     keyboardType="email"
     icon={require("../../email.png")}
     value={this.state.email}
@@ -33,7 +33,7 @@ handleChangeText=(text)=>{
     errorMessage={this.state.errorMessage}
     isSubDomain={true}
     subDomain=".subdomain.com"
-    customStyle={{fontSize:16,color:"black"}
+    customStyle={{fontSize:16,color:"black"}}
     />
 ```
 
@@ -53,6 +53,7 @@ handleChangeText=(text)=>{
 | pointerEvent      | string       | auto            | Yes      | allow user touch or not             |
 | subDomain         | string       | .ensurexper.com | Yes      | domain text for show                |
 | customStyle       | object       | null            | Yes      | text style for textinput            |
+| label       | string       | null            | Yes      | label same as material text inut            |
 
 ## 2. ProgressiveImage
 
@@ -87,7 +88,7 @@ import { ListLoadMore } from 'as-components'
 data={[]}
 refreshing={false}
 renderItem={(data,index)=>{return(<View><Text>{data.toString()}</Text></View>)}}
-onNextPageLoad={{nextPage}=>{console.log(nextPage)}}
+onNextPageLoad={{nextPage}=>{console.log("nextPage",nextPage)}}
 loaderSize="small"
 />
 ```
@@ -117,7 +118,7 @@ import { GridLoadMore } from 'as-components'
 data={[]}
 refreshing={false}
 renderItem={(data,index)=>{return(<View><Text>{data.toString()}</Text></View>)}}
-onNextPageLoad={{nextPage}=>{console.log(nextPage)}}
+onNextPageLoad={{nextPage}=>{console.log("nextPage",nextPage)}}
 loaderSize="small"
 numColumn={2}
 />
@@ -190,23 +191,20 @@ This component will placed at the end of compoent and before last closed view/sc
 import { Loader } from "as-components";
 
 <View>
-
-.... other components
-
-... other components
-<Loader
-  isLoading={this.state.loading}
-  backgroundColor="black"
-  indicatorColor="white"
-  size="small"
-/>
-</View>
+  .... other components ... other components
+  <Loader
+    isLoading={this.state.loading}
+    backgroundColor="black"
+    indicatorColor="white"
+    size="small"
+  />
+</View>;
 ```
 
 #### Props
 
 | Props           | Type   | Default  | Optional | Description                                      |
-|-----------------|--------|----------|----------|--------------------------------------------------|
+| --------------- | ------ | -------- | -------- | ------------------------------------------------ |
 | isLoading       | bool   | false    | No       | isLoading is boolean for showing loader          |
 | size            | string | small    | Yes      | size is loader size                              |
 | backgroundColor | string | 00000040 | Yes      | backgroundColor is color for loader's background |
@@ -222,26 +220,23 @@ You also need to install [react-native-responsive-fontsize](https://github.com/h
 import { ReactButton } from "as-components";
 
 <View>
-
-.... other components
-
-... other components
-<ReactButton
-  styleButton={styles.submit}
-  onPress={() => {
-    this.onPressSubmit();
-  }}
-  backgroundColor={colors.LIGHT_BLUE}
-  textColor={colors.WHITE}
-  label="Submit"
-/>
-</View>
+  .... other components ... other components
+  <ReactButton
+    styleButton={styles.submit}
+    onPress={() => {
+      this.onPressSubmit();
+    }}
+    backgroundColor={colors.LIGHT_BLUE}
+    textColor={colors.WHITE}
+    label="Submit"
+  />
+</View>;
 ```
 
 #### Props
 
 | Props           | Type   | Default   | Optional | Description                                                          |
-|-----------------|--------|-----------|----------|----------------------------------------------------------------------|
+| --------------- | ------ | --------- | -------- | -------------------------------------------------------------------- |
 | label           | string | empty     | No       | label for button                                                     |
 | styleButton     | object | falsenull | Yes      | Style for button                                                     |
 | onPress         | func   | null      | No       | call back function for button click                                  |
@@ -257,25 +252,22 @@ import { ReactButton } from "as-components";
 import { ReactText } from "as-components";
 
 <View>
-
-.... other components
-
-... other components
-<ReactText
-  buttonStyle={{width:120,height:45,backgroundColor:'black'}}
-  textStyle={{color:'white'}}
-  onPress={() => {
-    this.onPressSubmit();
-  }}
-  content="Submit"
-/>
-</View>
+  .... other components ... other components
+  <ReactText
+    buttonStyle={{ width: 120, height: 45, backgroundColor: "black" }}
+    textStyle={{ color: "white" }}
+    onPress={() => {
+      this.onPressSubmit();
+    }}
+    content="Submit"
+  />
+</View>;
 ```
 
 #### Props
 
 | Props       | Type   | Default   | Optional | Description                                                          |
-|-------------|--------|-----------|----------|----------------------------------------------------------------------|
+| ----------- | ------ | --------- | -------- | -------------------------------------------------------------------- |
 | content     | string | empty     | No       | content for text                                                     |
 | buttonStyle | object | falsenull | Yes      | Style for button                                                     |
 | onPress     | func   | null      | No       | call back function for button click                                  |

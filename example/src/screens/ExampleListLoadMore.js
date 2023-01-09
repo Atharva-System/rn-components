@@ -29,13 +29,8 @@ class ExampleListLoadMore extends PureComponent {
     )
       .then(response => response.json())
       .then(responseJson => {
-        console.log('responseJson', responseJson);
         if (responseJson) {
           const {page, per_page, total, total_pages, data} = responseJson;
-          console.log(
-            'page >= total_pages && data.length <= 0',
-            page >= total_pages && data.length <= 0,
-          );
           this.setState({
             serverData: page == 1 ? data : [...this.state.serverData, ...data],
             loading: false,
@@ -50,7 +45,7 @@ class ExampleListLoadMore extends PureComponent {
 
   loadMoreData = (page, isAllDataFetched) => {
     //On click of Load More button We will call the web API again
-    console.log('page, isAllDataFetched', page, isAllDataFetched);
+
     if (!isAllDataFetched) {
       this.setState({currentPage: this.state.currentPage + 1}, () => {
         this.setState({fetching_from_server: true}, () => {
@@ -60,13 +55,9 @@ class ExampleListLoadMore extends PureComponent {
           )
             .then(response => response.json())
             .then(responseJson => {
-              console.log('responseJson', responseJson);
               if (responseJson) {
                 const {page, per_page, total, total_pages, data} = responseJson;
-                console.log(
-                  'page >= total_pages && data.length <= 0',
-                  page >= total_pages && data.length <= 0,
-                );
+
                 this.setState({
                   serverData:
                     page == 1 ? data : [...this.state.serverData, ...data],

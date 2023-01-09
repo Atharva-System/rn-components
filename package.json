@@ -1,6 +1,6 @@
 {
   "name": "as-components",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A simple and customized reuseable components",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,10 @@
     "react",
     "components",
     "as",
-    "AS"
+    "AS",
+    "AtharvaSystem",
+    "Atharva",
+    "Atharva System"
   ],
   "author": "AtharvaSystem",
   "license": "MIT",

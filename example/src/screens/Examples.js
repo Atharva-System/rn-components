@@ -27,6 +27,15 @@ class Examples extends PureComponent {
             onButtonClick={this.onButtonClick.bind(this, 'ListLoadMore')}
           />
           {this.renderSeparator()}
+          <LoaderButton
+            title="InlineImageTextInput"
+            isLoading={false}
+            onButtonClick={this.onButtonClick.bind(
+              this,
+              'InlineImageTextInput',
+            )}
+          />
+          {this.renderSeparator()}
         </View>
       </SafeAreaView>
     );

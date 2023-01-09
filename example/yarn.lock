@@ -1704,10 +1704,10 @@ array.prototype.flatmap@^1.3.0:
     es-abstract "^1.19.2"
     es-shim-unscopables "^1.0.0"
 
-as-components@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/as-components/-/as-components-1.0.4.tgz#83dc425c6177ff50f1170ed1e703ea9f0a681745"
-  integrity sha512-8HfH0IBV0DxkTrvIP5DyvE7PkwzbdIt9VjkIy6s+afKPBhtgRwybQdhbJ06OURs1E5+K1vxHWNtD1fnHI6Yl3g==
+as-components@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/as-components/-/as-components-1.0.5.tgz#c2abc2838398e5b7210b846f65b35b2c447f3762"
+  integrity sha512-eGSifLWwuOkwZ4R0Ry1MUq54KoMrPjsFznc0bEi7TFrs16ENhC+g/zgnfqEG0LHJ5rqEZSQf1kN18DgF0bVwzg==
 
 asap@~2.0.6:
   version "2.0.6"

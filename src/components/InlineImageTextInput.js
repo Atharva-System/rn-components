@@ -1,13 +1,15 @@
 import React, { Component } from "react";
-import { View, TextInput, Image, Text } from "react-native";
+import { View, TextInput, Image, Text, Animated } from "react-native";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import { StyleSheet } from "react-native";
 
 import { colors } from "../style/colors";
 
-export default class InlineImageTextInput extends Component {
+class InlineImageTextInput extends Component {
   constructor(props) {
     super(props);
+    this.moveText = new Animated.Value(0);
+    this.state = { inputValue: props.value };
   }
   getFocus = () => {
     if (this.inputRef) {
@@ -18,6 +20,46 @@ export default class InlineImageTextInput extends Component {
     if (this.inputRef) {
       this.inputRef.blur();
     }
+  };
+  componentDidMount() {
+    if (this.state.inputValue !== "") {
+      this.moveTextTop();
+    }
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.value != this.props.value) {
+      this.setState({ inputValue: this.props.value }, () => {
+        if (this.state.inputValue !== "") {
+          this.moveTextTop();
+        } else if (this.state.inputValue === "") {
+          this.moveTextBottom();
+        }
+      });
+    }
+  }
+  onFocusHandler = () => {
+    if (this.state.inputValue !== "") {
+      this.moveTextTop();
+    }
+  };
+  onBlurHandler = () => {
+    if (this.state.inputValue === "") {
+      this.moveTextBottom();
+    }
+  };
+  moveTextTop = () => {
+    Animated.timing(this.moveText, {
+      toValue: 1,
+      duration: 150,
+      useNativeDriver: true,
+    }).start();
+  };
+  moveTextBottom = () => {
+    Animated.timing(this.moveText, {
+      toValue: 0,
+      duration: 150,
+      useNativeDriver: true,
+    }).start();
   };
   render() {
     const {
@@ -33,9 +75,41 @@ export default class InlineImageTextInput extends Component {
       pointerEvent = "auto",
       subDomain = ".ensurexper.com",
       customStyle = {},
+      label,
     } = this.props;
+    const yVal = this.moveText.interpolate({
+      inputRange: [0.4, 2],
+      outputRange: [4, -20],
+    });
+    const animStyle = {
+      transform: [
+        {
+          translateY: yVal,
+        },
+      ],
+    };
+
     return (
       <View>
+        {label && (
+          <Animated.View style={[styles.animatedStyle, animStyle]}>
+            <Text
+              style={[
+                styles.txtLabel,
+                {
+                  fontSize:
+                    this.state.inputValue == undefined ||
+                    this.state.inputValue == ""
+                      ? RFPercentage(2.2)
+                      : RFPercentage(1.7),
+                },
+              ]}
+            >
+              {label}
+            </Text>
+          </Animated.View>
+        )}
+
         <View
           style={[styles.container, errorMessage ? styles.bottomBorder : null]}
         >
@@ -46,13 +120,15 @@ export default class InlineImageTextInput extends Component {
             ref={(ref) => (this.inputRef = ref)}
             {...this.props}
             style={[styles.inputBox, customStyle]}
-            placeholder={placeholder}
+            // placeholder={placeholder}
             keyboardType={keyboardType}
             onChangeText={(text) => handleChangeText(text)}
-            value={value}
+            value={this.state.inputValue}
             secureTextEntry={isSecureTextEntry}
             editable={isEditable}
             pointerEvents={pointerEvent}
+            onFocus={this.onFocusHandler}
+            onBlur={this.onBlurHandler}
           />
           {isSubDomain ? (
             <Text style={[styles.subLabelInputBox, customStyle]}>
@@ -108,4 +184,15 @@ export const styles = StyleSheet.create({
     fontSize: RFPercentage(1.8),
     color: colors.SALTBOX_GREY,
   },
+  animatedStyle: {
+    top: 0,
+    left: 0,
+    position: "absolute",
+  },
+  txtLabel: {
+    fontSize: RFPercentage(2.2),
+    color: colors.LIGHT_GREY,
+  },
 });
+
+export default InlineImageTextInput;
